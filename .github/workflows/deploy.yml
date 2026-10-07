@@ -26,15 +26,15 @@ jobs:
 
       - name: Build site
         run: |
-          # Copy site HTML files to _site root
           mkdir -p _site
+          # Copy HTML pages to root
           cp -r agencygtm.framer.website/. _site/
-
-          # Copy image assets into _site so relative paths work
+          # Copy all local assets (images + downloaded mjs modules)
           cp -r framerusercontent.com _site/framerusercontent.com
-
           # Fix favicon paths: ../framerusercontent.com/ → ./framerusercontent.com/
-          find _site -name "*.html" -exec sed -i 's|../framerusercontent.com/|./framerusercontent.com/|g' {} +
+          find _site -maxdepth 1 -name "*.html" -exec sed -i 's|../framerusercontent.com/|./framerusercontent.com/|g' {} +
+          # blogs/ and case-studies/ subfolders: ../../framerusercontent.com/ → ../framerusercontent.com/
+          find _site/blogs _site/case-studies -name "*.html" -exec sed -i 's|../../framerusercontent.com/|../framerusercontent.com/|g' {} + 2>/dev/null || true
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
