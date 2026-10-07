@@ -323,7 +323,7 @@
     
     <!-- End of headEnd -->
 	
-<script>(function(){function f(){document.querySelectorAll('[data-framer-appear-id]').forEach(function(e){if(parseFloat(window.getComputedStyle(e).opacity)<0.01){e.style.setProperty('opacity','1','important');e.style.setProperty('transform','none','important');}});}setTimeout(f,3000);})();</script></head>
+<script>(function(){function f(){document.querySelectorAll('[style*="opacity"]').forEach(function(e){if(parseFloat(e.style.opacity)<0.01){e.style.opacity='1';}});}setTimeout(f,2000);setTimeout(f,5000);})();</script></head>
 <body>
 	<script async src="https://events.framer.com/script?v=2" data-fid="b798e746958e02cbd4ce709cca77e2b93cf6017b5cf15dc8cb294b691826898d" data-no-nt></script>
 	<!-- Start of bodyStart -->
