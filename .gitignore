@@ -1,0 +1,5 @@
+﻿hts-cache/
+my-app/node_modules/
+my-app/.next/
+*.log
+.env
